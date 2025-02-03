@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday!</title>
     <style>
         body {
@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
             flex-direction: column;
             animation: backgroundShift 10s infinite alternate;
@@ -26,7 +26,7 @@
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             color: #ff69b4;
             margin: 10px 0;
             animation: bounce 2s infinite;
@@ -38,38 +38,8 @@
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #6a5acd;
-        }
-
-        .balloon {
-            position: absolute;
-            width: 40px;
-            height: 60px;
-            background: red;
-            border-radius: 50% 50% 45% 45%;
-            box-shadow: inset -4px -4px 10px rgba(0,0,0,0.2);
-            animation: float 5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-150px); }
-            100% { transform: translateY(0); }
-        }
-
-        .firework {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: yellow;
-            border-radius: 50%;
-            animation: explode 1s ease-out infinite;
-        }
-
-        @keyframes explode {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(5); opacity: 0; }
         }
 
         .pin-container {
@@ -79,9 +49,9 @@
         }
 
         .pin-input {
-            width: 50px;
-            height: 50px;
-            font-size: 2em;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5em;
             text-align: center;
             border: 2px solid #6a5acd;
             border-radius: 10px;
@@ -93,25 +63,14 @@
             transform: scale(1.1);
         }
 
-        img {
-            max-width: 90%;
-            height: auto;
-            margin: 10px 0;
-        }
-
         .message {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #333;
-            padding: 20px;
-            max-width: 90%;
-            line-height: 1.8;
+            padding: 10px;
+            width: 90%;
+            line-height: 1.5;
             text-align: center;
             animation: fadeIn 2s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
 
         .hidden {
@@ -150,31 +109,6 @@
     <div id="surprise" class="hidden"></div>
 
     <script>
-        function createBalloon() {
-            const balloon = document.createElement('div');
-            balloon.classList.add('balloon');
-            balloon.style.left = Math.random() * window.innerWidth + 'px';
-            balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-            document.body.appendChild(balloon);
-
-            setTimeout(() => {
-                balloon.remove();
-            }, 5000);
-        }
-
-        function createFirework() {
-            const firework = document.createElement('div');
-            firework.classList.add('firework');
-            firework.style.left = Math.random() * window.innerWidth + 'px';
-            firework.style.top = Math.random() * window.innerHeight + 'px';
-            firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
-            document.body.appendChild(firework);
-
-            setTimeout(() => {
-                firework.remove();
-            }, 1000);
-        }
-
         const pinInputs = document.querySelectorAll('.pin-input');
 
         pinInputs.forEach((input, index) => {
@@ -202,9 +136,6 @@
                 }
             });
         });
-
-        setInterval(createBalloon, 1000);
-        setInterval(createFirework, 1500);
     </script>
 </body>
 </html>
